@@ -5,7 +5,7 @@ Plugin URI: http://premium.wpmudev.org/project/friends
 Description: Lets your users 'friend' each other, display funky widgets with avatar mosaics of all their friends on the site and generally get all social!
 Author: Paul Menard (Incsub)
 Author URI: http://premium.wpmudev.org
-Version: 2.0
+Version: 1.3.1.1
 Network: true
 WDP ID: 62
 Domain Path: languages
@@ -26,9 +26,21 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-require_once( 'includes/BFIGitHubPluginUploader.php' );
-if ( is_admin() ) {
-    new BFIGitHubPluginUpdater( __FILE__, 'wolffe', 'wordpress-friends' );
+require_once 'includes/updater.php';
+if(is_admin()) {
+    $config = array(
+        'slug' => plugin_basename(__FILE__), // this is the slug of your plugin
+        'proper_folder_name' => 'wordpress-friends', // this is the name of the folder your plugin lives in
+        'api_url' => 'https://api.github.com/repos/wolffe/wordpress-friends', // the github API url of your github repo
+        'raw_url' => 'https://raw.github.com/wolffe/wordpress-friends/master', // the github raw url of your github repo
+        'github_url' => 'https://github.com/wolffe/wordpress-friends', // the github url of your github repo
+        'zip_url' => 'https://github.com/wolffe/wordpress-friends/zipball/master', // the zip url of the github repo
+        'sslverify' => true, // wether WP should check the validity of the SSL cert when getting an update, see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/2 and https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/4 for details
+        'requires' => '4.0', // which version of WordPress does your plugin require?
+        'tested' => '4.1.1', // which version of WordPress is your plugin tested up to?
+        'readme' => 'README.MD' // which file to use as the readme for the version number
+    );
+    new WP_GitHub_Updater($config);
 }
 
 if (!defined('WPMUDEV_FRIENDS_I18N_DOMAIN'))
