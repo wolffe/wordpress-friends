@@ -5,7 +5,7 @@ Plugin URI: http://premium.wpmudev.org/project/friends
 Description: Lets your users 'friend' each other, display funky widgets with avatar mosaics of all their friends on the site and generally get all social!
 Author: Paul Menard (Incsub)
 Author URI: http://premium.wpmudev.org
-Version: 1.3.1.1
+Version: 2.0
 Domain Path: languages
 
 Copyright 2007-2012 Incsub (http://incsub.com)
